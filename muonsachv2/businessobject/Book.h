@@ -13,9 +13,9 @@ private:
 public:
     Book();
     Book(int, string, float);
-    void CreateKeyVector() override;
-    void SetValueVector() override;
-    void GetValueVector() override;
+    void Set_keyVector() override;
+    void Set_valueVector() override;
+    void GetDataFrom_valueVector() override;
     TableUnit* ClonePtr() override;
 };
 

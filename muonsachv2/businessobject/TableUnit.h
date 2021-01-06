@@ -17,12 +17,15 @@ protected:
     int _Id;
 public:
     TableUnit();
-    virtual void CreateKeyVector() = 0;
-    virtual void SetValueVector() = 0;
-    virtual void GetValueVector() = 0;
+    virtual void Set_keyVector() = 0;
+    virtual void Set_valueVector() = 0;
+    virtual void GetDataFrom_valueVector() = 0;
     virtual TableUnit* ClonePtr() = 0;
 
+    vector<string> Get_keyVector();
+    vector<string> Get_valueVector();
     string ToString();
+    void SetValue(int, string);
 };
 
 #endif

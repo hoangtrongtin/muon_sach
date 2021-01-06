@@ -12,6 +12,7 @@ private:
     TableUnit* tableUnit;
 public:
     TableData(TableUnit*);
+    TableUnit* CloneTableUnitPtr();
     void PushBack(TableUnit*);
     string ToString();
 };

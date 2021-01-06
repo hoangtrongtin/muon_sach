@@ -4,6 +4,10 @@ TableData::TableData(TableUnit* pTU){
     _data.clear();
     tableUnit = pTU->ClonePtr();
 }
+TableUnit* TableData::CloneTableUnitPtr(){
+    TableUnit* pTU = tableUnit->ClonePtr();
+    return pTU;
+}
 string TableData::ToString(){
     string s = "";
     for(auto pTU: _data) s += pTU->ToString() + '\n';

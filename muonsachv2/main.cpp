@@ -5,6 +5,7 @@
 #include "businessobject/TableUnit.h"
 #include "businessobject/Book.h"
 #include "dataaccess/TableData.h"
+#include "ui/UI.h"
 
 using namespace std;
 
@@ -14,10 +15,14 @@ int main(){
     TableData* bookData = new TableData(book1);
     bookData->PushBack(book1);
     bookData->PushBack(book2);
-    cout << "Hello World" << endl;
-    cout << book1->ToString();
-    cout << "done" << endl;
-    cout << bookData->ToString() << endl;
-    cout << "done" << endl;
+    // cout << "Hello World" << endl;
+    // cout << book1->ToString();
+    // cout << "done" << endl;
+    // cout << bookData->ToString() << endl;
+    // cout << "done" << endl;
+    UI myUI;
+    myUI.ReadTable(bookData);
+    cout << "done" <<endl;
+    myUI.EnterData(bookData);
     return 0;
 }
