@@ -15,13 +15,6 @@ void Book::Set_keyVector(){
 }
 void Book::Set_valueVector(){
     this->_value = {to_string(this->_id), this->_bookName, to_string(this->_bookPrice)};
-    // cout << "setvaluevector" << endl;
-    // _value[0] = to_string(_id);
-    // cout << "setvaluevector1" << endl;
-    // this->_value[1] = this->_bookName;
-    // cout << "setvaluevector2" << endl;
-    // this->_value[2] = to_string(this->_bookPrice);
-    // cout << "setvaluevector3" << endl;
 }
 void Book::GetData(vector<string> vValue){// number of elements
     this->_id = stoi(vValue[0]);

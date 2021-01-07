@@ -10,7 +10,6 @@ void Menu::Initial(){
     
     TableUnit* borrow1 = new Borrow(1, 11, 111, "2001");
     TableUnit* borrow2 = new Borrow(1, 22, 222, "2002");
-    // TableUnit* borrow21 = new Borrow(-1, 22, 222, "2003");
     TableUnit* borrow3 = new Borrow(-1, 33, 333, "2003");
     TableUnit* borrow4 = new Borrow(1, 44, 444, "2004");
     TableUnit* borrow5 = new Borrow(-1, 34, 333, "2005");
@@ -21,13 +20,22 @@ void Menu::Initial(){
     borrowData->PushBack(borrow4);
     borrowData->PushBack(borrow5);
 
+    TableUnit* member1 = new Member("Thuong");
+    TableUnit* member2 = new Member("Tin");
+    TableUnit* member3 = new Member("Linh");
+    memberData = new TableData(new Member, "Member Table");
+    memberData->PushBack(member1);
+    memberData->PushBack(member2);
+    memberData->PushBack(member3);
+
     _tableData.push_back(bookData);
     _tableData.push_back(borrowData);
+    _tableData.push_back(memberData);
 }
 void Menu::Show(){
     int menuSelect = 0;
     do{
-        system("cls"); 
+        // system("cls"); 
         cout << "Select Menu: " << endl;
         cout << "0. Quit." << endl;
         cout << "1. Add, Edit, Delete, Read Table." << endl;
@@ -104,5 +112,40 @@ void Menu::Q1(){
 void Menu::Q2(){
     UI myUI;
     int q2Select = 0;
+    int tableSelect = 0;
+    do{
+        cout << " Select option: " << endl;
+        cout << " 0. Quit." << endl;
+        cout << " 1. Back up." << endl;
+        cout << " 2. Restore." << endl;
+        cin >> q2Select; cin.ignore();
+        if(q2Select == 0) break;
+        else if (q2Select < 0 || q2Select > 2) {
+            cout << " Wrong selection, do it again." << endl;
+            continue;
+        }
+        else if (q2Select == 1){
+            for (auto pTD: _tableData){
+                myUI.Backup(pTD);
+            }
+            break;
+        }
+        else if (q2Select == 2){
+            do{
+                cout << " Selectable: " << endl;
+                cout << " 0. Quit."  << endl;
+                cout << " 1. Book." << endl;
+                cout << " 2. Borrow." << endl;
+                cout << " 3. Member." << endl;
+                cin >> tableSelect; cin.ignore();
+                if (tableSelect < 0 || tableSelect > 3){
+                    cout << "Wrong Selection! " << endl;
+                    continue;
+                }
+                if (tableSelect == 0) break;
+                myUI.Restore(_tableData[tableSelect-1]);
+            }while(true);
+        }
+    }while(true);
     
 }

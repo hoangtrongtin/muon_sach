@@ -3,6 +3,7 @@
 #include "../businessobject/TableUnit.h"
 #include <vector>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -14,16 +15,16 @@ private:
     int _maxId;
 public:
     TableData(TableUnit*, string);
-    string GetName();
     TableUnit* CloneTableUnitPtr();
     void PushBack(TableUnit*);
-    string ToString();
+    string ToString();//
     vector<TableUnit*> Get_data();
+    string GetName();
     TableUnit* Get_unit(int);
     int Get_unitPos(int);
     void Del(int);
-    void Backup();
-    void Restore();
+    int Backup();
+    int Restore();
 };
 
 #endif

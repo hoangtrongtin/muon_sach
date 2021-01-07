@@ -7,6 +7,7 @@
 #include "../businessobject/Borrow.h"
 #include "../dataaccess/TableData.h"
 #include <algorithm>
+#include <iomanip>
 using namespace std;
 class UI{
 private:
@@ -21,7 +22,8 @@ public:
     void ReadAll();
     void EditTable(TableData*);
     void DeleteTable(TableData*);
-    void Q3();
+    void Backup(TableData*);
+    void Restore(TableData* pTD);
 };
 
 #endif

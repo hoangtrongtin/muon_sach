@@ -62,18 +62,49 @@ string EncodeToFile(vector<string> vs){
     string s = "";
     for(string si: vs) s += si + '$';
     //s.erase(s.length(), 1);
+    return s;
 }
 vector<string> DecodeFromFile(string s){
     vector<string> vs;
     string stemp ="";
     for(int i = 0; i < s.length(); i++){
-        if(s[i] != '$') stemp += s;
+        if(s[i] != '$') stemp += s[i];
         else{
             vs.push_back(stemp);
+            // cout << stemp << endl;
             stemp = "";
         }
     }
+    // cout << vs.size() << endl;
+    // for(auto vi: vs){cout << vi << endl;}
+    return vs;
 }
-void TableData::Backup(){
-    
+int TableData::Backup(){
+    string filepath = "data/" + _tableName + ".data";
+    ofstream outFile(filepath);
+    if(!outFile) return 0;
+    for(TableUnit* pTU: _data){
+        pTU->Set_valueVector();
+        vector<string> vs = pTU->Get_valueVector();
+        outFile << EncodeToFile(vs) << endl;
+    }
+    outFile.close();
+    return 1;
+}
+int TableData::Restore(){
+    string filepath = "data/" + _tableName + ".data";
+    ifstream inFile(filepath);
+    if(!inFile) return 0;
+    _data.clear();
+    const int maxSize = 255;
+    char buff[maxSize];
+    while(inFile.getline(buff, maxSize)){
+        vector<string> vs = DecodeFromFile(buff);
+        // cout << buff << endl;
+        TableUnit* pTU = _tableUnit->ClonePtr();
+        pTU->GetData(vs);
+        _data.push_back(pTU);
+    }
+    inFile.close();
+    return 1;
 }

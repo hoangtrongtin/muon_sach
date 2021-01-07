@@ -1,5 +1,4 @@
 #include "UI.h"
-#include <iomanip>
 
 UI::UI(){}
 void UI::Init(){}
@@ -19,7 +18,7 @@ void UI::ReadTable(TableData* pTD){
         }
         vector<string> valueVector = pTU->Get_valueVector();
         for(int j = 0; j < valueVector.size(); j++){
-            cout << setw(15) << left << fixed << setprecision(2) << valueVector[j];
+            cout << setw(15) << left << setprecision(2) << fixed << valueVector[j];
         }
         cout << endl << string(15*valueVector.size(), '-') << endl;
     }
@@ -51,6 +50,7 @@ void UI::AddToTable(TableData* pTD){
     EnterData(pTU);
     // cout << pTU->ToString() << endl;
     pTD->PushBack(pTU);
+    cout << " Add to " + pTD->GetName() << " done!" << endl;
 }
 void UI::EditTable(TableData* pTD){
     cout << "Enter Id: ";
@@ -78,7 +78,17 @@ void UI::DeleteTable(TableData* pTD){
     cout << " Delete done" << endl;
     cout << pTD->ToString() << endl;
 }
-void UI::Q3(){
+void UI::Backup(TableData* pTD){
+    int result = pTD->Backup();
+    if (result == 1) cout << " Back up " << pTD->GetName() << " done!" << endl;
+    else cout << " Back up " << pTD->GetName() << " fail!" << endl;
+}
+void UI::Restore(TableData* pTD){
+    int result = pTD->Restore();
+    if (result == 1) cout << " Restore " << pTD->GetName() << " done!" << endl;
+    else cout << " Restore " << pTD->GetName() << " fail!" << endl;
+}
+//void UI::Q3(){
     // vector<TableUnit*> vpTU = borrowData->Get_data();
     // int vSize = vpTU.size();
     // vector<int> borrowTime;
@@ -128,4 +138,4 @@ void UI::Q3(){
     vector<TableUnit*> books = bookData->Get_data();
     // sort(books.begin(), books.end(), [&mapIDCount](Book* a, Book* b){return mapIDCount[a->Get_ID()] > mapIDCount[b->Get_ID()];})*/
 
-}
+//}

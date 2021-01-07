@@ -25,9 +25,9 @@ public:
     void Set_id(int);
     vector<string> Get_keyVector();
     vector<string> Get_valueVector();
-    string ToString();
-    string KeyToString();
-    void SetValue(int, string);
+    string ToString();//
+    string KeyToString();//
+    void SetValue(int, string);//
     int Get_ID();
 };
 
