@@ -74,3 +74,6 @@ vector<string> DecodeFromFile(string s){
         }
     }
 }
+void TableData::Backup(){
+    
+}
