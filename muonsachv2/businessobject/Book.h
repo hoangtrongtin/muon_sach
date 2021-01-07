@@ -12,10 +12,10 @@ private:
     float _bookPrice;
 public:
     Book();
-    Book(int, string, float);
+    Book(string, float);
     void Set_keyVector() override;
     void Set_valueVector() override;
-    void GetDataFrom_valueVector() override;
+    void GetData(vector<string>) override;
     TableUnit* ClonePtr() override;
 };
 

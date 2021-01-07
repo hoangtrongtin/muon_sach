@@ -4,25 +4,31 @@
 
 #include "businessobject/TableUnit.h"
 #include "businessobject/Book.h"
+#include "businessobject/Borrow.h"
 #include "dataaccess/TableData.h"
 #include "ui/UI.h"
+#include "ui/Menu.h"
 
 using namespace std;
 
 int main(){
-    TableUnit* book1 = new Book(1,"book1", 150);
-    TableUnit* book2 = new Book(2,"book2", 250);
-    TableData* bookData = new TableData(book1);
-    bookData->PushBack(book1);
-    bookData->PushBack(book2);
-    // cout << "Hello World" << endl;
-    // cout << book1->ToString();
-    // cout << "done" << endl;
-    // cout << bookData->ToString() << endl;
-    // cout << "done" << endl;
+
     UI myUI;
-    myUI.ReadTable(bookData);
-    cout << "done" <<endl;
-    myUI.EnterData(bookData);
+    // myUI.ReadTable(bookData);
+    // cout << "done" <<endl;
+    // myUI.AddToTable(bookData);
+    // // cout << "Add done" << endl;
+    // // myUI.ReadTable(bookData);
+    // cout << endl;
+    // myUI.ReadTable(borrowData);
+    // myUI.Init();
+    // myUI.ReadAll();
+    // myUI.EditTable();
+    cout << "_____________________________________________________" << endl;
+    // myUI.Q3();
+    Menu myMenu;
+    myMenu.Initial();
+    myMenu.Show();
+
     return 0;
 }

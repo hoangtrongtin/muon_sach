@@ -9,12 +9,21 @@ using namespace std;
 class TableData{
 private:
     vector<TableUnit*> _data;
-    TableUnit* tableUnit;
+    string _tableName;
+    TableUnit* _tableUnit;
+    int _maxId;
 public:
-    TableData(TableUnit*);
+    TableData(TableUnit*, string);
+    string GetName();
     TableUnit* CloneTableUnitPtr();
     void PushBack(TableUnit*);
     string ToString();
+    vector<TableUnit*> Get_data();
+    TableUnit* Get_unit(int);
+    int Get_unitPos(int);
+    void Del(int);
+    void Backup();
+    void Restore();
 };
 
 #endif
